@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Portfolio</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+padding:0;
+background:#f4f4f4;
+}
+
+section{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+img{
+width:150px;
+height:150px;
+border-radius:50%;
+}
+
+</style>
+
+</head>
+<body>
+
+<section>
+
+{% if bio %}
+
+<img src="{{ bio.profile_picture.url }}">
+
+<h1>{{ bio.name }}</h1>
+
+<h3>{{ bio.title }}</h3>
+
+<p>{{ bio.description }}</p>
+
+{% endif %}
+
+</section>
+
+<section>
+
+<h2>Education</h2>
+
+{% for edu in education %}
+<p>
+{{ edu.degree }}
+-
+{{ edu.institute }}
+-
+{{ edu.year }}
+</p>
+{% endfor %}
+
+</section>
+
+<section>
+
+<h2>Skills</h2>
+
+{% for skill in skills %}
+<p>{{ skill.name }}</p>
+{% endfor %}
+
+</section>
+
+<section>
+
+<h2>Experience</h2>
+
+{% for exp in experience %}
+<p>
+<b>{{ exp.title }}</b>
+<br>
+{{ exp.description }}
+</p>
+{% endfor %}
+
+</section>
+
+<section>
+
+<h2>Projects</h2>
+
+{% for project in projects %}
+<p>
+
+<b>{{ project.title }}</b>
+
+<br>
+
+{{ project.description }}
+
+<br>
+
+<a href="{{ project.github_link }}">
+Github
+</a>
+
+</p>
+
+{% endfor %}
+
+</section>
+
+</body>
+</html>
